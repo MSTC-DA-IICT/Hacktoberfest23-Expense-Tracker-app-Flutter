@@ -1,4 +1,6 @@
-# Learn To Manage : expense_tracker_app
+# Learn To Manage : Expense_tracker_app
+
+This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source contribution. Make the best out of the ongoing Hacktoberfest 2023 by contributing to for-the-community projects. This project participates in Hacktoberest 2023 and all successful PRs made here will be counted among the at least 4 successful pull requests that you'd need to make in order to be eligible for the Hacktoberfest appreciation (plant a tree / get a tee).
 
 A new Flutter project.
 
