@@ -6,7 +6,11 @@ This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source cont
 
 ---
 
-A new Flutter project.
+## Expense Tracker App
+>The Expense Tracker App is a powerful and user-friendly mobile application designed to help you take control of your finances effortlessly.
+
+>Whether you're a budgeting pro or just getting started with managing your expenses, our app is here to simplify the process and provide you with valuable insights into your spending habits.
+---
 
 ### :dart: What you have to do
 * First check `contributing.md` for details on how to work with github.
@@ -25,7 +29,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ---
 
-## Features
+## :placard: Features
 >Add, edit, and delete expenses.
 
 >Categorize expenses.
@@ -37,7 +41,7 @@ samples, guidance on mobile development, and a full API reference.
 >Generate expense reports.
 
 ---
-## Contribution Guidelines
+## :hammer_and_wrench: Contribution Guidelines
 We welcome contributions from the open-source community! To contribute to this project, follow these steps:
 
 1.Fork the repository and create your branch:
