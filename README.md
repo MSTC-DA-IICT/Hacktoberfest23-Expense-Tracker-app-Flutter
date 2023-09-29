@@ -4,7 +4,7 @@ This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source cont
 
 <img src="https://res.cloudinary.com/dbvyvfe61/image/upload/v1619799241/Cicada%203301:%20Reinvented/MSTC_ffmo9v.png" width="10%">
 ---
-## Expense Tracker App
+## :placard: Expense Tracker App
 >The Expense Tracker App is a powerful and user-friendly mobile application designed to help you take control of your finances effortlessly.
 
 >Whether you're a budgeting pro or just getting started with managing your expenses, our app is here to simplify the process and provide you with valuable insights into your spending habits.
