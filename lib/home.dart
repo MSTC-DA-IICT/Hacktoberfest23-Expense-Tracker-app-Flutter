@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: Row(
                   children : [
                     Text('Your past transactions:' ,
@@ -40,28 +40,28 @@ class Home extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           child: Image.asset('./assets/credit.jpg'),
                         ),
-                        tileColor: Color(0xfff4bbff),
+                        tileColor: const Color(0xfff4bbff),
                         shape: RoundedRectangleBorder( //<-- SEE HERE
 
                           borderRadius: BorderRadius.circular(20),
                         ),
 
 
-                        title: Text('expense',
+                        title: const Text('expense',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 22,
                             color: Colors.black,
                           ),
                         ),
-                        subtitle: Text('caption',
+                        subtitle: const Text('caption',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                             color: Colors.black,
                           ),
                         ),
-                        trailing: Text('\₹ 50',
+                        trailing: const Text('\₹ 50',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
@@ -87,18 +87,18 @@ class Home extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 240,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.purpleAccent,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Stack(
+              child: const Stack(
                   children: [
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 110),
+                      padding: EdgeInsets.only(top: 30, left: 110),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -130,7 +130,7 @@ class Home extends StatelessWidget {
             height: 170,
             width: 320,
             decoration: BoxDecoration(
-              boxShadow:[
+              boxShadow:const [
                 BoxShadow(
                   color: Colors.purpleAccent,
                   offset: Offset(0,6),
