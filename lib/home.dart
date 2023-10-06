@@ -1,10 +1,21 @@
+import 'package:expense_tracker_app/add_new_card.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+
+  final Function(String,int) addExpense;
+  const Home({Key? key, required this.addExpense}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+
+}
+
+class _HomeState extends State<Home> {
+  
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -14,7 +25,7 @@ class Home extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                padding:  EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: Row(
                   children : [
                     Text('Your past transactions:' ,
@@ -24,54 +35,12 @@ class Home extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-
                   ]
                 ),
               ),
             ),
             SliverList(
-              delegate: SliverChildBuilderDelegate(
-                  (content,index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-
-                      child: ListTile(
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset('./assets/credit.jpg'),
-                        ),
-                        tileColor: Color(0xfff4bbff),
-                        shape: RoundedRectangleBorder( //<-- SEE HERE
-
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-
-
-                        title: Text('expense',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
-                            color: Colors.black,
-                          ),
-                        ),
-                        subtitle: Text('caption',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                        trailing: Text('\₹ 50',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-              ),
+              delegate: SliverChildListDelegate(list),
             )
           ],
         )
@@ -87,18 +56,18 @@ class Home extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 240,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.purpleAccent,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Stack(
+              child: const Stack(
                   children: [
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 110),
+                      padding: EdgeInsets.only(top: 30, left: 110),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -131,7 +100,7 @@ class Home extends StatelessWidget {
             width: 320,
             decoration: BoxDecoration(
               boxShadow:[
-                BoxShadow(
+                const BoxShadow(
                   color: Colors.purpleAccent,
                   offset: Offset(0,6),
                   blurRadius: 12,
@@ -146,7 +115,7 @@ class Home extends StatelessWidget {
             child: const Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -163,7 +132,7 @@ class Home extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Padding(
-                  padding: const EdgeInsets.only(left: 105),
+                  padding:  EdgeInsets.only(left: 105),
                   child: Row(
                       children: [
                         Text('\₹ 0.00',
@@ -178,7 +147,7 @@ class Home extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:15),
+                  padding: EdgeInsets.symmetric(horizontal:15),
                   child: Row(
                       children: [
                         Row(
@@ -211,7 +180,7 @@ class Home extends StatelessWidget {
                 ),
                 SizedBox(height: 5,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Row(
 
                     children: [
@@ -241,3 +210,5 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+

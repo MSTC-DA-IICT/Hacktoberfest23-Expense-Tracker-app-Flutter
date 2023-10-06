@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'home.dart';
 import 'bottom_bar.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: Bottom(),
+        home: const Bottom(),
       theme: ThemeData(
         primaryColor: Constants().primaryColor,
         scaffoldBackgroundColor: Colors.white,

@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hive: ^2.2.3
   build_runner: ^2.4.6
+  textfield_tags: ^2.0.2
 
 dev_dependencies:
   flutter_test:
