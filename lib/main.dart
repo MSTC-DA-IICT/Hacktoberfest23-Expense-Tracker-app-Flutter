@@ -1,7 +1,6 @@
+import 'package:expense_tracker_app/splash.screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'home.dart';
-import 'bottom_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: Bottom(),
+      home: const SplashScreen(),
       theme: ThemeData(
         primaryColor: Constants().primaryColor,
         scaffoldBackgroundColor: Colors.white,
-
       ),
-
-    )
-    ;
+    );
   }
 }
-
