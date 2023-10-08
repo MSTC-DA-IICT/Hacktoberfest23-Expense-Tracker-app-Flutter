@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
 
-  final Function(String,int) addExpense;
+  final Function(String,double) addExpense;
   const Home({Key? key, required this.addExpense}) : super(key: key);
 
   @override

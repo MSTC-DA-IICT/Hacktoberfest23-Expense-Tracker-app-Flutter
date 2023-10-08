@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-
+import 'package:textfield_tags/textfield_tags.dart';
 import 'package:flutter/material.dart';
 import 'add_new_card.dart';
 import 'home.dart';
@@ -15,13 +15,32 @@ class Bottom extends StatefulWidget {
 }
 
 class _BottomState extends State<Bottom> {
-  GlobalKey<_BottomState> bottomStateKey = GlobalKey();
+
+  TextEditingController nameOfExpense = TextEditingController();
+  TextEditingController amountOfExpense = TextEditingController();
+
+  TextEditingController tags = TextEditingController();
+  // GlobalKey<_BottomState> bottomStateKey = GlobalKey();
+
+  List<Tag> tagArray = <Tag>[];
   int index_color=0;
   
 
-  void addExpense(String name, int amount){
+  void addExpense(String name, double amount){
     setState(() => list.add(Expense(name: name, amount: amount)));
   }
+
+  void onDeleteTag(String s){
+    setState(() {
+      tagArray.removeWhere((element) => element.tagString == s);
+    });
+  }
+
+  Tag makeNewChip(String s){
+    return Tag(tagString: s,onDelete: onDeleteTag);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -81,169 +100,138 @@ class _BottomState extends State<Bottom> {
         ),
     );
   }
-
   popUpDialog(BuildContext context){
+
     showDialog(
         barrierDismissible: true,context: context, builder: (context)
     {
       return StatefulBuilder(
           builder: ((context,setState) {
-            TextEditingController nameOfExpense = TextEditingController();
-            TextEditingController amountOfExpense = TextEditingController();
+            
+            
+
             
             return AlertDialog(
               title: const Text("Add Expense",
                 textAlign: TextAlign.left,
               ),
-              content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children:[
-                    TextField(
-                      controller:nameOfExpense,
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.red,
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 15,),
-                    TextField(
-                      controller: amountOfExpense,
-                      keyboardType: TextInputType.number,
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.red,
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
+              content: SizedBox(
+                width: MediaQuery.sizeOf(context).width * 0.5,
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children:[
+                      TextField(
+              
+                        controller:nameOfExpense,
+                        style: const TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Enter The Description Of Expense',
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
                         ),
                       ),
-                    ),
+                      const SizedBox(height: 15,),
+                      TextField(
+                        controller: amountOfExpense,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        style: const TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Enter the amount',
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                        ),
+                      ),
                     const SizedBox(height: 15,),
-                    TextField(
-                      onChanged: (val){
 
+                    TextField(
+                      controller: tags,
+                      onEditingComplete: (){
+
+                        String tag = tags.text;
+                        
+                        setState(() {
+                          tagArray.add(makeNewChip(tag));
+                        });
+                        tags.clear();
+                        print(tagArray.length);
                       },
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        style: const TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Enter Tags',
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor
+                              ),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
                         ),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.red,
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                      ),
                     ),
                     const SizedBox(height: 15,),
-                    TextField(
-                      onChanged: (val){
-
-                      },
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.red,
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                      ),
+                    Wrap(
+                      textDirection: TextDirection.ltr,
+                      alignment: WrapAlignment.center,
+                      children: tagArray ,
                     ),
-                    const SizedBox(height: 15,),
-                    TextField(
-                      onChanged: (val){
-
-                      },
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.red,
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor
-                            ),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                      ),
-                    ),
-                  ]
+                      const SizedBox(height: 15,),
+                    ]
+                ),
               ),
               actions: [
                 ElevatedButton(onPressed: () {
                   String name = nameOfExpense.text;
-                  int amount = int.parse(amountOfExpense.text);
-                  addExpense(name, amount);
+                  double amount = double.parse(amountOfExpense.text);
+                  addExpense(name, double.parse(amount.toStringAsFixed(3)));
                   Navigator.of(context).pop();
                 },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,
                   ), child:  const Text("Create"),
                 ),
-
-
               ],
 
             );})
@@ -251,8 +239,8 @@ class _BottomState extends State<Bottom> {
     });
 
 
-  }
 
+  }
   
 }
 
