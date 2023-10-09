@@ -20,14 +20,40 @@ class _BottomState extends State<Bottom> {
 
   TextEditingController tags = TextEditingController();
   // GlobalKey<_BottomState> bottomStateKey = GlobalKey();
-
+  List<Widget> list = <Widget>[];
   List<Tag> tagArray = <Tag>[];
-  int index_color=0;
+  int index_color=0;  
   
+  bool _nameError = false, _amountError = false;
 
-  void addExpense(String name, double amount){
-    setState(() => list.add(Expense(name: name, amount: amount)));
+  void checkError(){
+
+    try{
+      double.parse(amountOfExpense.text);
+        _amountError = false;
+        
+    }catch(e){
+      setState(() {
+        _amountError = true;
+      });
+    }
+
+    if(nameOfExpense.text.isEmpty){
+      setState(() {
+        _nameError = true;
+      });
+
+    }else{
+        _nameError = false;
+    }
+
+
+
   }
+  void addExpense(String name, double amount){
+    setState(() => list.add(Expense(name: name, amount: amount, tags: tagArray,)));
+  }
+  
 
   void onDeleteTag(String s){
     setState(() {
@@ -43,10 +69,13 @@ class _BottomState extends State<Bottom> {
 
   @override
   Widget build(BuildContext context) {
-    List Screen = [Home(addExpense: addExpense,),const Chart(),const Profile()];
+    List Screen = [Home(addExpense: addExpense,list: list, ),const Chart(),const Profile()];
     return Scaffold(
       body: Screen[index_color],
       floatingActionButton: FloatingActionButton(onPressed: (){
+        setState((){
+          tagArray.clear();
+        });
         popUpDialog(context);
       },
       backgroundColor: const Color(0xffec88ff),
@@ -124,7 +153,8 @@ class _BottomState extends State<Bottom> {
                         controller:nameOfExpense,
                         style: const TextStyle(color: Colors.black),
                         decoration: InputDecoration(
-                          hintText: 'Enter The Description Of Expense',
+                          hintText: 'Enter The Expense-Name',
+                          errorText: _nameError ? "Invalid Name" : null,
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor
@@ -152,6 +182,7 @@ class _BottomState extends State<Bottom> {
                         style: const TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           hintText: 'Enter the amount',
+                          errorText: _amountError ? "Invalid Amount" : null,
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor
@@ -184,7 +215,7 @@ class _BottomState extends State<Bottom> {
                           tagArray.add(makeNewChip(tag));
                         });
                         tags.clear();
-                        print(tagArray.length);
+
                       },
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         style: const TextStyle(color: Colors.black),
@@ -222,10 +253,17 @@ class _BottomState extends State<Bottom> {
               ),
               actions: [
                 ElevatedButton(onPressed: () {
-                  String name = nameOfExpense.text;
-                  double amount = double.parse(amountOfExpense.text);
-                  addExpense(name, double.parse(amount.toStringAsFixed(3)));
-                  Navigator.of(context).pop();
+                  checkError();
+                  if(!_amountError && !_nameError){
+                    String name = nameOfExpense.text;
+                    double amount = double.parse(amountOfExpense.text);
+                    addExpense(name, double.parse(amount.toStringAsFixed(3)));
+                    Navigator.of(context).pop();
+                    nameOfExpense.clear();
+                    amountOfExpense.clear();
+                    
+                    
+                  }
                 },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,

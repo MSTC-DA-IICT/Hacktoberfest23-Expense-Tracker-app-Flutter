@@ -3,19 +3,23 @@
 
 import 'package:flutter/material.dart';
 
-var list = <Widget>[];
+
 
 
 class Expense extends StatefulWidget {
   final String name;
   final double amount;
-  const Expense({super.key, required this.name, required this.amount});
+  final List<Widget> tags;
+  const Expense({super.key, required this.name, required this.amount, required this.tags});
 
   @override
   State<Expense> createState() => _ExpenseState();
 }
 
 class _ExpenseState extends State<Expense> {
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,16 +44,8 @@ class _ExpenseState extends State<Expense> {
             color: Colors.black,
           ),
         ),
-        subtitle: const Row(
-          children: [
-            Text('captions',
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 20,
-                color: Colors.black,
-              ),
-            ),
-          ],
+        subtitle: Row(
+          children: widget.tags,
         ),
         trailing: Text('₹ ${widget.amount}',
           style: const TextStyle(

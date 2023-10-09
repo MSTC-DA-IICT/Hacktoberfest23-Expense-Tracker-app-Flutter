@@ -1,10 +1,10 @@
-import 'package:expense_tracker_app/add_new_card.dart';
+
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-
+  final List<Widget> list;
   final Function(String,double) addExpense;
-  const Home({Key? key, required this.addExpense}) : super(key: key);
+  const Home({Key? key, required this.addExpense, required this.list}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SliverList(
-              delegate: SliverChildListDelegate(list),
+              delegate: SliverChildListDelegate(widget.list),
             )
           ],
         )
