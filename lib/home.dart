@@ -99,8 +99,8 @@ class _HomeState extends State<Home> {
             height: 170,
             width: 320,
             decoration: BoxDecoration(
-              boxShadow:[
-                const BoxShadow(
+              boxShadow:const [
+                BoxShadow(
                   color: Colors.purpleAccent,
                   offset: Offset(0,6),
                   blurRadius: 12,
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                   padding:  EdgeInsets.only(left: 105),
                   child: Row(
                       children: [
-                        Text('\₹ 0.00',
+                        Text('₹ 0.00',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 29,
@@ -184,7 +184,7 @@ class _HomeState extends State<Home> {
                   child: Row(
 
                     children: [
-                      Text('\₹ 0.00',
+                      Text('₹ 0.00',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
@@ -192,7 +192,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       SizedBox(width: 90,),
-                      Text('\₹ 0.00',
+                      Text('₹ 0.00',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,

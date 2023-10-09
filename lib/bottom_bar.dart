@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:textfield_tags/textfield_tags.dart';
 import 'package:flutter/material.dart';
 import 'add_new_card.dart';
 import 'home.dart';

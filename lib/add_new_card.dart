@@ -26,7 +26,7 @@ class _ExpenseState extends State<Expense> {
           borderRadius: BorderRadius.circular(10),
           child: Image.asset('./assets/credit.jpg'),
         ),
-        tileColor: Color(0xfff4bbff),
+        tileColor: const Color(0xfff4bbff),
         shape: RoundedRectangleBorder( //<-- SEE HERE
 
           borderRadius: BorderRadius.circular(20),
@@ -34,13 +34,13 @@ class _ExpenseState extends State<Expense> {
 
 
         title: Text(widget.name,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 22,
             color: Colors.black,
           ),
         ),
-        subtitle: Row(
+        subtitle: const Row(
           children: [
             Text('captions',
               style: TextStyle(
@@ -51,8 +51,8 @@ class _ExpenseState extends State<Expense> {
             ),
           ],
         ),
-        trailing: Text('\₹ ${widget.amount}',
-          style: TextStyle(
+        trailing: Text('₹ ${widget.amount}',
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25,
             color: Colors.black,

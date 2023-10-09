@@ -12,10 +12,10 @@ class _ChartState extends State<Chart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Statistics"),
+        title: const Text("Statistics"),
         centerTitle: true,
         backgroundColor: Colors.purple,
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
 
       ),
     );
