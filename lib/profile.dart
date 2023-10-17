@@ -13,9 +13,9 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: Text('Profile'),
+        title: const Text('Profile'),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
       ),
     );
   }

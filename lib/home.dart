@@ -1,78 +1,50 @@
+
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  final List<Widget> list;
+  final Function(String,double) addExpense;
+  const Home({Key? key, required this.addExpense, required this.list}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+
+}
+
+class _HomeState extends State<Home> {
+  
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
-          child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: SizedBox(height: 300, child: head()),
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(children: [
-                Text(
-                  'Your past transactions:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 25,
-                    color: Colors.black,
-                  ),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(height: 300, child: head()),
+            ),
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                child: Row(
+                  children : [
+                    Text('Your past transactions:' ,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 25,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ]
                 ),
               ]),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((content, index) {
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                child: ListTile(
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset('./assets/credit.jpg'),
-                  ),
-                  tileColor: const Color(0xfff4bbff),
-                  shape: RoundedRectangleBorder(
-                    //<-- SEE HERE
-
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  title: const Text(
-                    'expense',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 22,
-                      color: Colors.black,
-                    ),
-                  ),
-                  subtitle: const Text(
-                    'caption',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
-                  ),
-                  trailing: const Text(
-                    '\₹ 50',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              );
-            }),
-          )
-        ],
-      )),
+            SliverList(
+              delegate: SliverChildListDelegate(widget.list),
+            )
+          ],
+        )
+      ),
     );
   }
 
@@ -91,19 +63,25 @@ class Home extends StatelessWidget {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: const Stack(children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 30, left: 110),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'EXPENSE TRACKER',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+              child: const Stack(
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 30, left: 110),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Text(
+                            'EXPENSE TRACKER',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+
+                        ],
                       ),
                     ],
                   ),
@@ -119,7 +97,7 @@ class Home extends StatelessWidget {
             height: 170,
             width: 320,
             decoration: BoxDecoration(
-              boxShadow: const [
+              boxShadow:const [
                 BoxShadow(
                   color: Colors.purpleAccent,
                   offset: Offset(0, 6),
@@ -133,8 +111,7 @@ class Home extends StatelessWidget {
             child: const Column(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -150,23 +127,23 @@ class Home extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Padding(
-                  padding: const EdgeInsets.only(left: 105),
-                  child: Row(children: [
-                    Text(
-                      '\₹ 0.00',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 29,
-                        color: Colors.white,
-                      ),
-                    )
-                  ]),
+                  padding:  EdgeInsets.only(left: 105),
+                  child: Row(
+                      children: [
+                        Text('₹ 0.00',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 29,
+                            color: Colors.white,
+                          ),
+                        )
+                      ]
+                  ),
                 ),
                 SizedBox(height: 15),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(children: [
-                    Row(
+                  padding: EdgeInsets.symmetric(horizontal:15),
+                  child: Row(
                       children: [
                         Text(
                           'Your Income:',
@@ -215,6 +192,7 @@ class Home extends StatelessWidget {
                       ),
                       Text(
                         '₹ 0.00',
+
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
@@ -232,3 +210,5 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+

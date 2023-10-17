@@ -15,7 +15,7 @@ class _ChartState extends State<Chart> {
         title: const Text("Statistics"),
         centerTitle: true,
         backgroundColor: Colors.purple,
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
 
       ),
     );
