@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
                     ),
                   ]
                 ),
-              ),
+              ]),
             ),
             SliverList(
               delegate: SliverChildListDelegate(widget.list),
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget head(){
+  Widget head() {
     return Stack(
       children: [
         Column(
@@ -83,12 +83,10 @@ class _HomeState extends State<Home> {
 
                         ],
                       ),
-                    )
-
-
-
-                  ]
-              ),
+                    ],
+                  ),
+                )
+              ]),
             ),
           ],
         ),
@@ -102,13 +100,11 @@ class _HomeState extends State<Home> {
               boxShadow:const [
                 BoxShadow(
                   color: Colors.purpleAccent,
-                  offset: Offset(0,6),
+                  offset: Offset(0, 6),
                   blurRadius: 12,
                   spreadRadius: 6,
                 ),
               ],
-
-
               color: Colors.purple,
               borderRadius: BorderRadius.circular(15),
             ),
@@ -127,8 +123,7 @@ class _HomeState extends State<Home> {
                             color: Colors.white,
                           ),
                         ),
-                      ]
-                  ),
+                      ]),
                 ),
                 SizedBox(height: 3),
                 Padding(
@@ -150,49 +145,54 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.symmetric(horizontal:15),
                   child: Row(
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Your Income:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
+                        Text(
+                          'Your Income:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
-                        SizedBox(width: 50,),
-                        Row(
-                          children: [
-                            Text(
-                              'Your Expenses:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
+                      ],
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Your Expenses:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
-                      ]
-                  ),
+                      ],
+                    ),
+                  ]),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Row(
-
                     children: [
-                      Text('₹ 0.00',
+                      Text(
+                        '₹ 0.00',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(width: 90,),
-                      Text('₹ 0.00',
+                      SizedBox(
+                        width: 90,
+                      ),
+                      Text(
+                        '₹ 0.00',
+
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,

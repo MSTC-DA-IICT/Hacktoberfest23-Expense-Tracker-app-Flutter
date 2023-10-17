@@ -1,0 +1,12 @@
+#Launcher Icon Configs
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path_android: "assets/money.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/money.png"
+  image_path_ios: "assets/money.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+  ios: true
+  remove_alpha_ios: true
