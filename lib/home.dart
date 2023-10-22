@@ -15,16 +15,18 @@ class Home extends StatelessWidget {
           const SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(children: [
-                Text(
-                  'Your past transactions:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 25,
-                    color: Colors.black,
+              child: SingleChildScrollView(
+                child: Row(children: [
+                  Text(
+                    'Your past transactions:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 25,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ),
           SliverList(
