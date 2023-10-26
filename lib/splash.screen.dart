@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:expense_tracker_app/home_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:expense_tracker_app/bottom_bar.dart';
+import 'package:expense_tracker_app/bottom_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 1), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const Bottom()),
       );
     });
 
