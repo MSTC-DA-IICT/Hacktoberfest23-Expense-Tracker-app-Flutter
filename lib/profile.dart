@@ -64,6 +64,7 @@ sharedPreferences.setString('userdata', userdata);
     height = size.height;
     width = size.width;
     return Scaffold(
+
         appBar: AppBar(
           backgroundColor: Colors.purple,
           title: Text('Profile'),
@@ -287,5 +288,6 @@ sharedPreferences.setString('userdata', userdata);
                                 )),
                           ]))))),
         ]));
+
   }
 }
