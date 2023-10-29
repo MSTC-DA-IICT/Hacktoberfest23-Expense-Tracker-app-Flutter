@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914636014487",
+    "project_id": "hacktoberfestexpenses",
+    "storage_bucket": "hacktoberfestexpenses.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914636014487:android:f278f9880122e88eb93ad2",
+        "android_client_info": {
+          "package_name": "com.example.expense_tracker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3lTZyPyWi_75plgSs4MSRsBP9nREVAx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
